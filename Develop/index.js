@@ -38,8 +38,15 @@ function init() {
             name: 'description'
         },
         {
-            type: 'input',
+            type: 'checkbox',
             message: questions[2],
+            choices: [
+                'HTML',
+                'CSS',
+                'Javascript',
+                'Node.js',
+                'Inquirer.js'
+            ],
             name: 'technology'
         },
         {
@@ -70,14 +77,12 @@ function init() {
         {
             type: 'list',
             message: questions[8],
-            choices: ['choice1', 'choice2', 'choice3'],
+            choices: ['Apache', 'MIT', 'Mozilla', 'GPLv3', 'none'],
             name: 'license'
         },
       ]).then((answers) => {
         console.log(answers);
-        // const inputs = JSON.stringify(answers);
         const output = Markdown(answers);
-        console.log(output);
         writeToFile(`README-${answers.github}`,output);
       });
 }
