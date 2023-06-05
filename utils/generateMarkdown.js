@@ -1,4 +1,4 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
+// Function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(data) {
   let licenseType = data.license;
@@ -17,7 +17,7 @@ function renderLicenseBadge(data) {
   return licenseBadge;
 }
 
-// TODO: Create a function that returns the license link
+// Function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(data) {
   let licenseType = data.license;
@@ -36,15 +36,15 @@ function renderLicenseLink(data) {
   return licenseLink;
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
+// Function that returns the license section of README
+// If there is no license, return No License Used
 function renderLicenseSection(data) {
   let licenseType = data.license;
   let licenseText = ''
   if(licenseType === 'Apache') {
     licenseText = `Licensed under [Apache](https://opensource.org/licenses/Apache-2.0)`
   } else if (licenseType === 'MIT') {
-    licenseText = `Licensed under MIT](https://opensource.org/licenses/MIT)`
+    licenseText = `Licensed under [MIT](https://opensource.org/licenses/MIT)`
   } else if (licenseType === 'Mozilla') {
     licenseText = `Licensed under [Modzilla Public License](https://opensource.org/licenses/MPL-2.0)`
   } else if (licenseType === 'GPLv3') {
@@ -55,6 +55,7 @@ function renderLicenseSection(data) {
   return licenseText;
 }
 
+// Function to loop through all of the checked selections
 function renderTechnologyUsed(data){
   let tech = data.technology;
   let installText = '';
@@ -65,19 +66,19 @@ function renderTechnologyUsed(data){
   return installText;
 }
 
-// TODO: Create a function to generate markdown for README
+//function to generate markdown for README
 function generateMarkdown(data) {
   let licenseBadge = renderLicenseBadge(data);
   let licenseLink = renderLicenseLink(data);
   let licenseText = renderLicenseSection(data);
   let installText = renderTechnologyUsed(data);
-  console.log(installText);
-  return `# ${data.title} ${licenseBadge}${licenseLink}
+  return `# ${data.title}   ${licenseBadge}${licenseLink}
 
   ## Description
 
   ${data.description}
 
+  
   ## Table of Contents
 
    - [Installation](#installation)
@@ -87,31 +88,38 @@ function generateMarkdown(data) {
    - [License](#license)
    - [Questions](#contact)
 
+
   ## Installation <a id = "installation"></a>
   ${installText}
+
 
   ## Usage <a id = "usage"></a>
 
   ${data.usage}
 
+
   ## Contributing <a id = "contributing"></a>
 
   ${data.contribution}
+
 
   ## Tests <a id = "tests"></a>
 
   ${data.instructions}
 
+
   ## License <a id = "license"></a>
   
   ${licenseText}
+
 
   ## Questions <a id = "contact"></a>
 
   GitHub Profile: https://github.com/${data.github}
   
   Any questions can be sent to: ${data.email}
-  The subject of the email should be "${data.title} Inquiry"
+
+   - The subject of the email should be "${data.title} Inquiry"
 `;
 }
 
